@@ -1,0 +1,13 @@
+# OS & environment files
+.DS_Store
+*.pyc
+__pycache__/
+
+# Lecture & reference PDFs
+slides1.pdf
+student-chapter1.pdf
+
+# Root duplicate files (official submission is located in Assignment1/)
+/L01_Foundations_Tutorial.ipynb
+/coffee-task-photo.png
+/robot-body.jpg
