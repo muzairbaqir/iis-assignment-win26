@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<robot name="domestic_assistant_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ========================================== -->
+  <!-- Modular Sub-Component Includes             -->
+  <!-- ========================================== -->
+  <xacro:include filename="base.xacro" />
+  <xacro:include filename="arm.xacro" />
+  <xacro:include filename="gripper.xacro" />
+
+  <!-- ========================================== -->
+  <!-- Global Design Parameters                   -->
+  <!-- ========================================== -->
+  <!-- Base Parameters -->
+  <xacro:property name="base_radius" value="0.25" />
+  <xacro:property name="base_height" value="0.30" />
+  <xacro:property name="base_mass" value="15.0" />
+
+  <!-- Arm Parameters (Reaches fridge shelf at 0.4m & counter at 1.0m) -->
+  <xacro:property name="link1_length" value="0.45" />
+  <xacro:property name="link2_length" value="0.40" />
+  <xacro:property name="arm_link_radius" value="0.04" />
+  <xacro:property name="arm_link1_mass" value="2.5" />
+  <xacro:property name="arm_link2_mass" value="2.0" />
+
+  <!-- End-Effector Parameters (Must open >= 0.10 m for milk carton) -->
+  <xacro:property name="gripper_span" value="0.14" />
+  <xacro:property name="finger_len" value="0.12" />
+  <xacro:property name="finger_w" value="0.02" />
+  <xacro:property name="finger_th" value="0.02" />
+
+  <!-- ========================================== -->
+  <!-- World Ground Anchor                        -->
+  <!-- ========================================== -->
+  <link name="world" />
+
+  <joint name="world_to_base_joint" type="fixed">
+    <parent link="world" />
+    <child link="base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <!-- ========================================== -->
+  <!-- Component Instantiations                   -->
+  <!-- ========================================== -->
+  <!-- 1. Mobile/Pedestal Base -->
+  <xacro:robot_base 
+    base_name="base_link" 
+    base_radius="${base_radius}" 
+    base_height="${base_height}" 
+    mass_value="${base_mass}" 
+  />
+
+  <!-- 2. Manipulator Arm -->
+  <xacro:manipulator_arm 
+    parent_link="base_link" 
+    link1_length="${link1_length}" 
+    link2_length="${link2_length}" 
+    link_radius="${arm_link_radius}" 
+    mass_link1="${arm_link1_mass}" 
+    mass_link2="${arm_link2_mass}" 
+  />
+
+  <!-- 3. Parallel Gripper (End-Effector) -->
+  <xacro:parallel_gripper 
+    parent_link="wrist_link" 
+    gripper_span="${gripper_span}" 
+    finger_length="${finger_len}" 
+    finger_width="${finger_w}" 
+    finger_thickness="${finger_th}" 
+  />
+
+</robot>

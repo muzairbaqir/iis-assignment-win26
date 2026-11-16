@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ========================================== -->
+  <!-- Base Component Macro                       -->
+  <!-- ========================================== -->
+  <xacro:macro name="robot_base" params="base_name base_radius base_height mass_value">
+    <link name="${base_name}">
+      <inertial>
+        <origin xyz="0 0 ${base_height / 2.0}" rpy="0 0 0"/>
+        <mass value="${mass_value}"/>
+        <inertia 
+          ixx="${(mass_value/12.0) * (3*base_radius*base_radius + base_height*base_height)}" 
+          ixy="0.0" ixz="0.0"
+          iyy="${(mass_value/12.0) * (3*base_radius*base_radius + base_height*base_height)}" 
+          iyz="0.0"
+          izz="${(mass_value/2.0) * (base_radius*base_radius)}"
+        />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 ${base_height / 2.0}" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${base_radius}" length="${base_height}"/>
+        </geometry>
+        <material name="dark_grey">
+          <color rgba="0.3 0.3 0.3 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 ${base_height / 2.0}" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${base_radius}" length="${base_height}"/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+
+</robot>
