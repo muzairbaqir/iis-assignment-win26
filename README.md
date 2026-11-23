@@ -20,3 +20,9 @@ This repository contains assignment submissions for the *Integrated Intelligent 
 - **Main Notebook:** [`Assignment2/L02_Body_Motion_Problem_Tutorial.ipynb`](Assignment2/L02_Body_Motion_Problem_Tutorial.ipynb)
 - **Detailed Overview:** [`Assignment2/README.md`](Assignment2/README.md)
 - **Status:** Complete (Part 1 Action Designator E1–E6 solved; Part 2 URDF/Xacro kinematic modeling implemented).
+
+### 3. [Assignment 3: Tutorial 3 – Body Motion Problem (Scientific Object & Description Logics)](Assignment3/)
+- **Submission Directory:** [`Assignment3/`](Assignment3/)
+- **Main Notebook:** [`Assignment3/L03_Body_Motion_Problem_Tutorial.ipynb`](Assignment3/L03_Body_Motion_Problem_Tutorial.ipynb)
+- **Detailed Overview:** [`Assignment3/README.md`](Assignment3/README.md)
+- **Status:** Complete (Part 1 RWMS as Scientific Object E1–E6 solved; Part 2 Robot Motion Problem & Description Logics E7–E12 solved).
